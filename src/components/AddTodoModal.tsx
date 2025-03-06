@@ -87,6 +87,7 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({ isOpen, onClose }) => {
           name="startDate"
           value={formData.startDate}
           onChange={handleChange}
+          data-testid="start-date-input"
         />
         {submitted && errors.startDate && <p className="text-red-500 text-sm">{errors.startDate}</p>}
 
@@ -100,6 +101,7 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({ isOpen, onClose }) => {
           name="endDate"
           value={formData.endDate}
           onChange={handleChange}
+          data-testid="end-date-input"
         />
         {submitted && errors.endDate && <p className="text-red-500 text-sm">{errors.endDate}</p>}
 
