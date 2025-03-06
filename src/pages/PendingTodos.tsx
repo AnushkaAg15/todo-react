@@ -33,7 +33,7 @@ const PendingTodos = ()  => {
       <div key={todo.id} className={`border p-4 mb-2 rounded shadow ${todo.endDate < today ? "bg-red-100 dark:bg-red-800" : ""}`}>
         <h3 className="text-lg font-semibold">📌 {todo.title}</h3>
         <p className="text-gray-700 dark:text-gray-400">{todo.description}</p>
-        <p className="text-sm text-gray-600 dark:text-gray-300"> Created On: {todo.startDate}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-300"> Start Date: {todo.startDate}</p>
         <p className="text-sm text-gray-600 dark:text-gray-300">
             Due: {todo.endDate} {todo.endDate < today ? "🔥 Overdue!" : ""}
         </p>
