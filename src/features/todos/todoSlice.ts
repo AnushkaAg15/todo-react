@@ -7,16 +7,7 @@ interface TodoState {
 }
 
 const initialState: TodoState = {
-    todos: [
-        {
-            id: "1",
-            title: "Learning React",
-            description: "Hi I want to learn react",
-            startDate: "06/03-2025",
-            endDate: "10/03/2025",
-            status: "pending"
-        }
-    ]
+    todos: []
 }
 
 const todoSlice = createSlice ({
