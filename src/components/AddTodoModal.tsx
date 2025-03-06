@@ -53,7 +53,7 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({ isOpen, onClose }) => {
         <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">Add New Todo</h2>
 
         {/* Title */}
-        <label className="block text-gray-700 dark:text-gray-300 font-medium">
+        <label htmlFor="title" className="block text-gray-700 dark:text-gray-300 font-medium">
           Title <span className="text-red-500">*</span>
         </label>
         <input
@@ -67,7 +67,7 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({ isOpen, onClose }) => {
         {submitted && errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
 
         {/* Description */}
-        <label className="block mt-2 text-gray-700 dark:text-gray-300 font-medium">Description</label>
+        <label htmlFor="description" className="block mt-2 text-gray-700 dark:text-gray-300 font-medium">Description</label>
         <textarea
           className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
           name="description"
@@ -78,7 +78,7 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({ isOpen, onClose }) => {
         {submitted && errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
 
         {/* Start Date */}
-        <label className="block mt-2 text-gray-700 dark:text-gray-300 font-medium">
+        <label htmlFor="startDate" className="block mt-2 text-gray-700 dark:text-gray-300 font-medium">
           Start Date <span className="text-red-500">*</span>
         </label>
         <input
@@ -91,7 +91,7 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({ isOpen, onClose }) => {
         {submitted && errors.startDate && <p className="text-red-500 text-sm">{errors.startDate}</p>}
 
         {/* End Date */}
-        <label className="block mt-2 text-gray-700 dark:text-gray-300 font-medium">
+        <label htmlFor="endDate" className="block mt-2 text-gray-700 dark:text-gray-300 font-medium">
           End Date <span className="text-red-500">*</span>
         </label>
         <input

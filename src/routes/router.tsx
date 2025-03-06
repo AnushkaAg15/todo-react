@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../components/Layout"; // Ensure correct path
+import Layout from "../components/Layout";
 import PendingTodos from "../pages/PendingTodos";
 import Archive from "../pages/Archive";
 
