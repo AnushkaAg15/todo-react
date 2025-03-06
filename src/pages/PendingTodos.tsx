@@ -8,6 +8,7 @@ const PendingTodos = ()  => {
     const todos = useSelector((state: RootState) => state.todos.todos.filter(todo => todo.status === "pending"));
     const dispatch = useDispatch();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const today = new Date().toISOString().split("T")[0];
 
   return (
     <div className="m-4 p-4">
@@ -29,9 +30,12 @@ const PendingTodos = ()  => {
 
   <div className="space-y-4">
     {todos.map((todo) => (
-      <div key={todo.id} className="p-4 border rounded shadow">
+      <div key={todo.id} className={`border p-4 mb-2 rounded shadow ${todo.endDate < today ? "bg-red-100 dark:bg-red-800" : ""}`}>
         <h3 className="text-lg font-semibold">📌 {todo.title}</h3>
         <p className="text-gray-700 dark:text-gray-400">{todo.description}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-300">
+            Due: {todo.endDate} {todo.endDate < today ? "🔥 Overdue!" : ""}
+        </p>
         <div className="mt-2 space-x-2">
           <button
             className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
