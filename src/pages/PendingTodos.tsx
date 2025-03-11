@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 import { RootState } from '../store';
 import { markComplete, archiveTodo } from '../features/todos/todoSlice';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import AddTodoModal from '../components/AddTodoModal';
 
 const PendingTodos = ()  => {
@@ -9,6 +9,15 @@ const PendingTodos = ()  => {
     const dispatch = useDispatch();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const today = new Date().toISOString().split("T")[0];
+
+
+    // for optimization instead of onlcick = {()=>dispatch(markComplete(todo.id)) } -> as it causes creation of a new function on every re-render
+    const clickHandler = useCallback((todoId: string, btn: 'completed' | 'archived') => {
+      return () => {
+        btn === 'completed' ? dispatch(markComplete(todoId)) : dispatch(archiveTodo(todoId))
+      }
+    }
+    , [dispatch]);
 
   return (
     <div className="m-4 p-4">
@@ -27,7 +36,6 @@ const PendingTodos = ()  => {
   
   <AddTodoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
-
   <div className="space-y-4">
     {todos.map((todo) => (
       <div key={todo.id} className={`border p-4 mb-2 rounded shadow ${todo.endDate < today ? "bg-red-100 dark:bg-red-800" : ""}`}>
@@ -40,13 +48,14 @@ const PendingTodos = ()  => {
         <div className="mt-2 space-x-2">
           <button
             className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
-            onClick={() => dispatch(markComplete(todo.id))}
+            onClick={clickHandler(todo.id, 'completed')}    
+            
           >
             Complete
           </button>
           <button
             className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
-            onClick={() => dispatch(archiveTodo(todo.id))}
+            onClick={clickHandler(todo.id, 'archived')}
           >
             Archive
           </button>

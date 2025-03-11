@@ -92,9 +92,9 @@ describe("Archive Component", () => {
     );
 
     expect(screen.getByText("Desc 1")).toBeInTheDocument();
-    expect(screen.getByText("Created On: 2025-03-01")).toBeInTheDocument();
+    expect(screen.getByText("Start Date: 2025-03-01")).toBeInTheDocument();
 
     expect(screen.getByText("Desc 2")).toBeInTheDocument();
-    expect(screen.getByText("Created On: 2025-03-02")).toBeInTheDocument();
+    expect(screen.getByText("Start Date: 2025-03-02")).toBeInTheDocument();
   });
 });
